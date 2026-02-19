@@ -1,0 +1,6 @@
+Name,Email,Phone,Source,Status
+John Doe,john.doe@example.com,9876543210,Website,new
+Jane Smith,jane.smith@example.com,9876543211,Facebook,new
+Alice Johnson,alice.j@example.com,9876543212,Instagram,converted
+Bob Brown,bob.b@example.com,9876543213,Manual,follow-up
+Charlie Davis,charlie.d@example.com,9876543214,Website,lost
