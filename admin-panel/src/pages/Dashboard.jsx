@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../utils/axiosConfig'; // Use interceptor instance
 import useAuth from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
@@ -21,9 +21,7 @@ const Dashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const { data } = await axios.get('/api/analytics/dashboard', {
-                headers: { Authorization: `Bearer ${user.token}` }
-            });
+            const { data } = await axios.get('/api/analytics/dashboard');
             setStats(data);
         } catch (error) {
             console.error(error);
