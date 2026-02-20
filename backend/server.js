@@ -20,9 +20,8 @@ const server = http.createServer(app);
 // Socket.IO setup with CORS
 const io = new Server(server, {
     cors: {
-        origin: ["http://localhost:5174", "http://localhost:5173", "http://127.0.0.1:5173", "https://crm-beige-sigma-76.vercel.app"],
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        credentials: true
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
     }
 });
 
@@ -78,9 +77,8 @@ connectToWhatsApp().catch(err => {
 });
 
 app.use(cors({
-    origin: ["http://localhost:5174", "http://localhost:5173", "http://127.0.0.1:5173", "https://crm-beige-sigma-76.vercel.app"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));
 app.use(express.json());
 
