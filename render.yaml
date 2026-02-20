@@ -1,0 +1,32 @@
+services:
+  # Backend Service (Node.js API)
+  - type: web
+    name: crm-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: crm-frontend
+          property: url
+
+  # Frontend Service (React Admin Panel)
+  - type: web
+    name: crm-frontend
+    env: static
+    plan: free
+    buildCommand: cd admin-panel && npm install && npm run build
+    staticPublishPath: admin-panel/dist
+    routes:
+      - type: rewrite
+        source: /(.*)
+        destination: /index.html
