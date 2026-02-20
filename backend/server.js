@@ -105,13 +105,9 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-// FOR LOCAL DEVELOPMENT
-if (process.env.NODE_ENV !== 'production') {
-    server.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-        console.log(`Socket.IO ready for WhatsApp QR code`);
-    });
-}
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Socket.IO ready for WhatsApp QR code`);
+});
 
-// FOR VERCEL DEPLOYMENT
 module.exports = app;
