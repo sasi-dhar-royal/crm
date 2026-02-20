@@ -24,7 +24,9 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('userInfo', JSON.stringify(data));
             return { success: true };
         } catch (error) {
-            return { success: false, message: error.response?.data?.message || 'Login failed' };
+            console.error('Login Error:', error);
+            const message = error.response?.data?.message || error.message || 'Login failed';
+            return { success: false, message };
         }
     };
 
