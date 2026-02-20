@@ -70,10 +70,11 @@ io.on('connection', (socket) => {
     });
 });
 
-// Initialize WhatsApp connection
+// Initialize WhatsApp connection (NON-BLOCKING)
 console.log('Initializing WhatsApp connection...');
 connectToWhatsApp().catch(err => {
-    console.error('WhatsApp connection error:', err);
+    console.error('WhatsApp connection error (Non-fatal):', err.message);
+    // Do not crash the server here
 });
 
 app.use(cors({
